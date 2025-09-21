@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Background image */
+            background: url("{{ url_for('static', filename='') }}") no-repeat center center fixed; 
+            background-size: cover;
+            padding: 30px; 
+        }
+        .container {
+            width: 420px;
+            background: rgba(219, 213, 213, 0.9); /* Slight transparency */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(219, 157, 157, 0.5);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #6d2c2c;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎓 Placement Prediction Form</h2>
+        <form method="POST" action="/predict">
+            <label>IQ</label>
+            <input type="number" name="iq" step="1" required>
+            
+            <label>Previous Semester Result</label>
+            <input type="number" name="prev_sem" step="0.1" required>
+            
+            <label>CGPA</label>
+            <input type="number" name="cgpa" step="0.1" required>
+            
+            <label>Academic Performance</label>
+            <select name="academic">
+                <option>Poor</option>
+                <option>Average</option>
+                <option>Good</option>
+                <option>Excellent</option>
+            </select>
+            
+            <label>Internship Experience</label>
+            <select name="internship">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            
+            <label>Extra Curricular Score (0-10)</label>
+            <input type="number" name="extra_curr" min="0" max="10" required>
+            
+            <label>Communication Skills (1-10)</label>
+            <input type="number" name="comm_skills" min="1" max="10" required>
+            
+            <label>Projects Completed</label>
+            <input type="number" name="projects" min="0" required>
+            
+            <button type="submit">Predict Placement</button>
+        </form>
+    </div>
+</body>
+</html>
